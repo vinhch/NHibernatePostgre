@@ -60,10 +60,10 @@ namespace NHibernatePostgre
 
         public void Dispose()
         {
-            //if (_dbConnection != null && _dbConnection.State != ConnectionState.Closed)
-            //{
-            //    _dbConnection.Close();
-            //}
+            if (_dbConnection != null && _dbConnection.State != ConnectionState.Closed)
+            {
+                _dbConnection.Close();
+            }
 
             if (_session != null)
             {

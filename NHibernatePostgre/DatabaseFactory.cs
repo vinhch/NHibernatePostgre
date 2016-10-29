@@ -8,7 +8,7 @@ namespace NHibernatePostgre
 {
     public class DatabaseFactory : IDatabaseFactory
     {
-        private Configuration _configuration;
+        private readonly Configuration _configuration;
 
         // Singleton: Database Instance
         private static IDatabase _databaseInstance;
@@ -46,9 +46,9 @@ namespace NHibernatePostgre
             _configuration = new Configuration().Configure();
         }
 
-        public DatabaseFactory(Configuration nHconfiguration)
+        public DatabaseFactory(Configuration configuration)
         {
-            _configuration = nHconfiguration;
+            _configuration = configuration;
         }
     }
 }

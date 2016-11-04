@@ -31,31 +31,32 @@ namespace NHibernatePostgre.Repositories
         {
             _database.BeginTransaction();
             _database.Session.Save(obj);
+            _database.Commit();
         }
 
         public virtual void Edit(TEntity obj)
         {
             _database.BeginTransaction();
             _database.Session.Update(obj);
+            _database.Commit();
         }
 
         public virtual void Remove(TEntity obj)
         {
             _database.BeginTransaction();
             _database.Session.Delete(obj);
+            _database.Commit();
         }
 
         public virtual void Merge(TEntity obj)
         {
             _database.BeginTransaction();
             _database.Session.Merge(obj);
-        }
-
-        public virtual void Commit()
-        {
-            _database.Session.Flush();
+            //_database.Session.Clear();
+            //_database.Session.Flush();
             _database.Commit();
         }
+
         #endregion
     }
 }

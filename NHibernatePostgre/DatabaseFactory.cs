@@ -10,18 +10,28 @@ namespace NHibernatePostgre
     {
         private readonly Configuration _configuration;
 
-        // Singleton: Database Instance
-        private static IDatabase _databaseInstance;
+        // Test Singleton: Database Instance?
+        //private static IDatabase _databaseInstance;
+        private IDatabase _databaseInstance;
+
+        public IDatabase CreateNewDatabase()
+        {
+            using (var sessionFactory = GetSessionFactory())
+            {
+                var session = sessionFactory.OpenSession();
+                //var session = sessionFactory.OpenStatelessSession();
+
+                session.FlushMode = FlushMode.Commit; //allow queries to return stale state
+                _databaseInstance = new Database(session);
+            }
+            return _databaseInstance;
+        }
+
         public IDatabase GetDatabase()
         {
             if (_databaseInstance == null)
             {
-                using (var sessionFactory = GetSessionFactory())
-                {
-                    var session = sessionFactory.OpenSession();
-                    session.FlushMode = FlushMode.Commit; //allow queries to return stale state
-                    _databaseInstance = new Database(session);
-                }
+                CreateNewDatabase();
             }
             return _databaseInstance;
         }
@@ -29,14 +39,12 @@ namespace NHibernatePostgre
         private ISessionFactory _sessionFactory;
         public ISessionFactory GetSessionFactory()
         {
-            if (_sessionFactory == null)
-            {
-                _configuration.SetNamingStrategy(new PostgresNamingStrategy(DefaultNamingStrategy.Instance));
+            if (_sessionFactory != null) return _sessionFactory;
 
-                _configuration.AddMapping(Database.CreateMappings());
-                SchemaMetadataUpdater.QuoteTableAndColumns(_configuration);
-                _sessionFactory = _configuration.BuildSessionFactory();
-            }
+            _configuration.SetNamingStrategy(new PostgresNamingStrategy(DefaultNamingStrategy.Instance));
+            _configuration.AddMapping(Database.CreateMappings());
+            SchemaMetadataUpdater.QuoteTableAndColumns(_configuration);
+            _sessionFactory = _configuration.BuildSessionFactory();
 
             return _sessionFactory;
         }

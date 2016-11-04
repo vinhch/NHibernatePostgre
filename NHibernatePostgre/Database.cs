@@ -14,16 +14,10 @@ namespace NHibernatePostgre
     public class Database : IDatabase
     {
         private readonly IDbConnection _dbConnection;
-        public IDbConnection Connection
-        {
-            get { return _dbConnection; }
-        }
+        public IDbConnection Connection => _dbConnection;
 
         private ISession _session;
-        public ISession Session
-        {
-            get { return _session; }
-        }
+        public ISession Session => _session;
 
         private ITransaction _transaction;
         public void BeginTransaction()
@@ -48,13 +42,17 @@ namespace NHibernatePostgre
                 if (_transaction != null && _transaction.IsActive)
                     _transaction.Rollback();
 
+                Session.Clear();
+                //Session.Flush();
                 throw;
             }
             finally
             {
-                _transaction.Dispose();
-                _transaction = null;
-                //Session.Dispose();
+                if (_transaction != null)
+                {
+                    _transaction.Dispose();
+                    _transaction = null;
+                }
             }
         }
 

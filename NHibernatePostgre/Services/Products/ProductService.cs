@@ -18,14 +18,12 @@ namespace NHibernatePostgre.Services
         public long AddEntry(Product entry)
         {
             _repository.Add(entry);
-            _repository.Commit();
             return entry.Id;
         }
 
         public void EditEntry(Product entry)
         {
             _repository.Edit(entry);
-            _repository.Commit();
         }
 
         public IEnumerable<Product> GetAll()
@@ -41,13 +39,11 @@ namespace NHibernatePostgre.Services
         public void MergeEntry(Product entry)
         {
             _repository.Merge(entry);
-            _repository.Commit();
         }
 
         public void RemoveEntry(Product entry)
         {
             _repository.Remove(entry);
-            _repository.Commit();
         }
 
         public void RemoveEntryById(long id)

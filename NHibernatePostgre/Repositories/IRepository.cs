@@ -13,7 +13,6 @@ namespace NHibernatePostgre.Repositories
         void Edit(TEntity obj);
         void Remove(TEntity obj);
         void Merge(TEntity obj);
-        void Commit();
         #endregion
     }
 }

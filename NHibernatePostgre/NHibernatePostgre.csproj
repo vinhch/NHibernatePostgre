@@ -71,12 +71,6 @@
     <Compile Include="Repositories\Products\ProductRepository.cs" />
     <Compile Include="Repositories\Products\IProductRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Services\BaseService.cs" />
-    <Compile Include="Services\Categories\ICategoryService.cs" />
-    <Compile Include="Services\Categories\CategoryService.cs" />
-    <Compile Include="Services\IService.cs" />
-    <Compile Include="Services\Products\ProductService.cs" />
-    <Compile Include="Services\Products\IProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

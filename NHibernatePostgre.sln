@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernatePostgre", "NHiber
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernatePostgre.ConsoleTests", "NHibernatePostgre.ConsoleTests\NHibernatePostgre.ConsoleTests.csproj", "{654E8727-2ED9-4196-935B-0100AF85343E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernatePostgre.Services", "NHibernatePostgre.Services\NHibernatePostgre.Services.csproj", "{624ED76E-FB92-4A3F-ADBF-6B8C614F97AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{654E8727-2ED9-4196-935B-0100AF85343E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{654E8727-2ED9-4196-935B-0100AF85343E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{654E8727-2ED9-4196-935B-0100AF85343E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624ED76E-FB92-4A3F-ADBF-6B8C614F97AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624ED76E-FB92-4A3F-ADBF-6B8C614F97AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624ED76E-FB92-4A3F-ADBF-6B8C614F97AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624ED76E-FB92-4A3F-ADBF-6B8C614F97AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

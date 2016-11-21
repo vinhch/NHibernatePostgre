@@ -4,18 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{654E8727-2ED9-4196-935B-0100AF85343E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{624ED76E-FB92-4A3F-ADBF-6B8C614F97AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NHibernatePostgre.ConsoleTests</RootNamespace>
-    <AssemblyName>NHibernatePostgre.ConsoleTests</AssemblyName>
+    <RootNamespace>NHibernatePostgre.Services</RootNamespace>
+    <AssemblyName>NHibernatePostgre.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.1.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.1.1\lib\net45\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,20 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppStartup.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="Categories\CategoryService.cs" />
+    <Compile Include="Categories\ICategoryService.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="Products\IProductService.cs" />
+    <Compile Include="Products\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestDb.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NHibernatePostgre.Services\NHibernatePostgre.Services.csproj">
-      <Project>{624ed76e-fb92-4a3f-adbf-6b8c614f97aa}</Project>
-      <Name>NHibernatePostgre.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NHibernatePostgre\NHibernatePostgre.csproj">
       <Project>{d4f3c51d-0998-48fa-bc45-87c1b25daf1b}</Project>
       <Name>NHibernatePostgre</Name>
